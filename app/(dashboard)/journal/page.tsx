@@ -1,8 +1,9 @@
-import NewEntryCard from "@/components/NewEntryCard"
-import EntryCard from "@/components/EntryCard"
-import { getUserByClerkID } from "@/utils/auth"
-import { prisma } from "@/utils/db"
-import Link from "next/link"
+import NewEntryCard from '@/components/NewEntryCard'
+import EntryCard from '@/components/EntryCard'
+import { getUserByClerkID } from '@/utils/auth'
+import { prisma } from '@/utils/db'
+import Link from 'next/link'
+import { analyze } from '@/utils/ai'
 
 const getEntries = async () => {
   const user = await getUserByClerkID()
@@ -11,7 +12,7 @@ const getEntries = async () => {
       userId: user.id,
     },
     orderBy: {
-      createdAt: "desc",
+      createdAt: 'desc',
     },
   })
 
@@ -27,7 +28,7 @@ const JournalPage = async () => {
         <NewEntryCard />
         {entries.map((entry) => (
           <Link href={`/journal/${entry.id}`} key={entry.id}>
-            <EntryCard  entry={entry} />
+            <EntryCard entry={entry} />
           </Link>
         ))}
       </div>
