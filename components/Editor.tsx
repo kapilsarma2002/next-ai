@@ -4,6 +4,7 @@ import { updateEntry } from '@/utils/api'
 import { useState } from 'react'
 import { useAutosave } from 'react-autosave'
 import { useRouter } from 'next/navigation'
+import Spinner from './Spinner'
 
 const Editor = ({ entry }) => {
   console.log(entry)
@@ -33,7 +34,7 @@ const Editor = ({ entry }) => {
     <div className="w-full h-full grid grid-cols-3 gap-0 relative">
       <div className="absolute left-0 top-0 p-2">
         {isSaving ? (
-          <div>loading...</div>
+          <Spinner />
         ) : (
           <div className="w-[16px] h-[16px] rounded-full bg-green-500"></div>
         )}
