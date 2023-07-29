@@ -1,6 +1,6 @@
 'use client'
 
-import { updateEntry } from '@/utils/api'
+import { updateEntry, deleteEntry } from '@/utils/api'
 import { useState } from 'react'
 import { useAutosave } from 'react-autosave'
 import { useRouter } from 'next/navigation'
@@ -14,7 +14,7 @@ const Editor = ({ entry }) => {
   const router = useRouter()
 
   const handleDelete = async () => {
-    // await deleteEntry(entry.id)
+    await deleteEntry(entry.id)
     router.push('/journal')
   }
 
